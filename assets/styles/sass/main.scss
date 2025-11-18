@@ -10,51 +10,46 @@ body {
 .app-card {
   background-color: b.$white;
   max-width: 100%;
-  margin: b.$spacing-16 b.$spacing-0 b.$spacing-0;
   border-radius: 1.5rem;
   padding: b.$spacing-4 b.$spacing-3;
 }
 
 .input-wrapper {
-    position: relative;
-    // display: inline-block;
-    
-    
-    input {
-        @include mx.txt-prst-3;
-        color: b.$green900;
-        background-color: b.$grey50;
-        padding: b.$spacing-1 b.$spacing-2;
-        border-radius: b.$spacing-1;
-        text-align: center;
-        width: 100%;
-        border: none;
-        text-align: right;
-        box-sizing: border-box;
-    }
-    
-    input::placeholder {
-        color: b.$grey300;
-    }
-    
-}
-    .input-wrapper::before {
-        position: absolute;
-        left: b.$spacing-2;
-        top: b.$spacing-2;
-        color: b.$grey300;
-        pointer-events: none;
-    }
-    
-    label {
-      @include mx.txt-prst-5;
-      color: b.$grey500;
-    }
+  position: relative;
+  // display: inline-block;
 
+  input {
+    @include mx.txt-prst-3;
+    color: b.$green900;
+    background-color: b.$grey50;
+    padding: b.$spacing-1 b.$spacing-2;
+    border-radius: b.$spacing-1;
+    text-align: center;
+    width: 100%;
+    border: none;
+    text-align: right;
+    box-sizing: border-box;
+  }
+
+  input::placeholder {
+    color: b.$grey300;
+  }
+}
+.input-wrapper::before {
+  position: absolute;
+  left: b.$spacing-2;
+  top: b.$spacing-2;
+  color: b.$grey300;
+  pointer-events: none;
+}
+
+label {
+  @include mx.txt-prst-5;
+  color: b.$grey500;
+}
 
 .bill-input {
   width: 100%;
-
 
   .input-wrapper::before {
     content: url(/assets/images/icon-dollar.svg);
@@ -106,71 +101,130 @@ body {
 }
 
 .number-of-people {
-    .label {
-        margin-bottom: b.$spacing-1;
-    }
+  .label {
+    margin-bottom: b.$spacing-1;
+  }
 
-    .input-wrapper::before {
+  .input-wrapper::before {
     content: url(/assets/images/icon-person.svg);
   }
 }
 
 .app-outputs {
-    max-width: 100%;
-    margin-top: b.$spacing-4;
-    padding: b.$spacing-3;
-    border-radius: b.$spacing-2;
-    background-color: b.$green900;
+  max-width: 100%;
+  margin-top: b.$spacing-4;
+  padding: b.$spacing-3;
+  border-radius: b.$spacing-2;
+  background-color: b.$green900;
 
+  .output {
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+  }
 
-    .output {
-        display: flex;
-        justify-content: space-between;
-        height: fit-content;
+  .output + .output {
+    margin: b.$spacing-3 0 b.$spacing-4;
+  }
+
+  .output-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .main-lb {
+    color: b.$white;
+    @include mx.txt-prst-5;
+    margin: b.$spacing-0;
+  }
+
+  .pp {
+    color: b.$grey400;
+    @include mx.txt-prst-6;
+    margin: b.$spacing-0;
+  }
+
+  .tip-pp,
+  .total-pp {
+    color: b.$green400;
+    @include mx.txt-prst-2;
+    margin: 0;
+  }
+
+  .reset {
+    @include mx.txt-prst-4;
+    width: 100%;
+    background-color: b.$green750;
+    color: b.$green900;
+    text-align: center;
+    padding: b.$spacing-2;
+    border-radius: b.$spacing-1;
+    border: none;
+  }
+
+  .reset:disabled {
+    color: b.$green800;
+  }
+}
+
+@media (min-width: 44rem) {
+  body {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .app-card {
+    width: 80%;
+    margin: auto;
+    box-sizing: border-box;
+    padding: b.$spacing-6 b.$spacing-10;
+  }
+
+  .tip-select {
+    justify-content: space-between;
+
+    button,
+    input {
+      flex-basis: calc(33% - 0.66rem);
     }
-
-    .output + .output {
-        margin: b.$spacing-3 0 b.$spacing-4;
+    input {
+      max-width: calc(33% - 0.66rem);
     }
+  }
 
-    .output-label {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .main-lb {
-        color: b.$white;
-        @include mx.txt-prst-5;
-        margin: b.$spacing-0;
-    }
-
-    .pp { 
-        color: b.$grey400;
-        @include mx.txt-prst-6;
-        margin: b.$spacing-0;
-    }
+  .app-outputs {
+    padding: b.$spacing-5 b.$spacing-6;
 
     .tip-pp,
     .total-pp {
-        color: b.$green400;
-        @include mx.txt-prst-2;
-        margin: 0;
+      @include mx.txt-prst-1;
     }
-
-    .reset {
-        @include mx.txt-prst-4;
-        width: 100%;
-        background-color: b.$green750;
-        color: b.$green900;
-        text-align: center;
-        padding: b.$spacing-1;
-        border-radius: b.$spacing-1;
-        border: none;
-    }
-
-    .reset:disabled {
-        color: b.$green800;
-    }
+  }
 }
 
+@media (min-width: 60rem) {
+  .app-card{
+    width: 80%;
+    padding: b.$spacing-4;
+    display: flex;
+    gap: b.$spacing-10;
+  }
+
+  .number-of-people {
+    margin-bottom: b.$spacing-2;
+  }
+
+  .app-inputs {
+    flex-basis: calc(60% - b.$spacing-5);
+  }
+  .app-outputs {
+    margin-top: 0;
+    flex-basis: calc(40% - b.$spacing-5);
+
+    button {
+      margin-top: 16%;
+    }
+  }
+}
