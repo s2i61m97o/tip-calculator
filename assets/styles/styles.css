@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+body {
+  background-color: #c5e4e7;
+  margin: 0;
+  max-width: 100vw;
+}
+
+.app-card {
+  background-color: #ffffff;
+  max-width: 100%;
+  margin: 8rem 0 0;
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+}
+
+.input-wrapper {
+  position: relative;
+}
+.input-wrapper input {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  color: #00474b;
+  background-color: #f3f9fa;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  width: 100%;
+  border: none;
+  text-align: right;
+  box-sizing: border-box;
+}
+.input-wrapper input::placeholder {
+  color: #9ebbbd;
+}
+
+.input-wrapper::before {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: #9ebbbd;
+  pointer-events: none;
+}
+
+label {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #5e7a7d;
+}
+
+.bill-input {
+  width: 100%;
+}
+.bill-input .input-wrapper::before {
+  content: url(/assets/images/icon-dollar.svg);
+}
+
+.tip {
+  margin: 2rem 0;
+}
+.tip p {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #5e7a7d;
+}
+
+.tip-select {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.tip-select button,
+.tip-select input {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  flex-basis: calc(50% - 0.5rem);
+  border: none;
+}
+.tip-select input {
+  color: #00474b;
+  background-color: #f3f9fa;
+  text-align: center;
+  max-width: calc(50% - 1rem);
+  box-sizing: border-box;
+}
+.tip-select input::placeholder {
+  color: #547878;
+}
+.tip-select button {
+  background-color: #00474b;
+  color: #ffffff;
+}
+
+.number-of-people .label {
+  margin-bottom: 0.5rem;
+}
+.number-of-people .input-wrapper::before {
+  content: url(/assets/images/icon-person.svg);
+}
+
+.app-outputs {
+  max-width: 100%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: #00474b;
+}
+.app-outputs .output {
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+}
+.app-outputs .output + .output {
+  margin: 1.5rem 0 2rem;
+}
+.app-outputs .output-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.app-outputs .main-lb {
+  color: #ffffff;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0;
+}
+.app-outputs .pp {
+  color: #7f9d9f;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  margin: 0;
+}
+.app-outputs .tip-pp,
+.app-outputs .total-pp {
+  color: #26c2ae;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 3rem;
+  letter-spacing: -0.67px;
+  margin: 0;
+}
+.app-outputs .reset {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  width: 100%;
+  background-color: #0d686d;
+  color: #00474b;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+.app-outputs .reset:disabled {
+  color: #085c61;
+}
+
+/*# sourceMappingURL=styles.css.map */

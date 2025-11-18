@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Tip calculator app</title>
+
+    <link rel="stylesheet" href="assets/styles/styles.css" />
+  </head>
+  <body>
+    <!-- <h1>SPLITTER</h1> -->
+
+    <section class="app-card">
+      <section class="app-inputs">
+        <form action="submit" class="bill-input">
+          <label for="bill-total"> Bill </label>
+          <div class="input-wrapper">
+            <input type="number" name="bill-total" placeholder="0" />
+          </div>
+        </form>
+        <div class="tip">
+          <p for="tip-select">Select Tip %</p>
+
+          <div class="tip-select">
+            <button>5%</button>
+            <button>10%</button>
+            <button>15%</button>
+            <button>25%</button>
+            <button>50%</button>
+            <input type="number" placeholder="Custom" name="custom-tip" />
+          </div>
+        </div>
+
+        <div class="number-of-people">
+          <form action="submit">
+            <label for="number-people"> Number of People </label>
+            <div class="input-wrapper">
+              <input type="number" name="number-people" placeholder="0" />
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="app-outputs">
+        <div class="output">
+          <div class="output-label">
+            <p class="main-lb">Tip Amount</p>
+            <p class="pp">/ person</p>
+          </div>
+          <p class="tip-pp">$0.00</p>
+        </div>
+        <div class="output">
+          <div class="output-label">
+            <p class="main-lb">Total</p>
+            <p class="pp">/ person</p>
+          </div>
+          <p class="total-pp">$0.00</p>
+        </div>
+        <button class="reset" disabled>Reset</button>
+      </section>
+    </section>
+  </body>
+</html>
