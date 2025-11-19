@@ -19,26 +19,39 @@
     <script defer src="app.js"></script>
   </head>
   <body>
-    <!-- <h1>SPLITTER</h1> -->
+    <img src="assets/images/logo.svg" alt="Splitter logo" class="logo">
 
     <section class="app-card">
       <section class="app-inputs">
         <form action="submit" class="bill-input">
           <label for="bill-total"> Bill </label>
           <div class="input-wrapper">
-            <input type="number" name="bill-total" placeholder="0" step="0.01" class="bill-total number-input"/>
+            <input
+              type="number"
+              name="bill-total"
+              placeholder="0"
+              class="bill-total number-input"
+              id="bill-total"
+            />
           </div>
         </form>
         <div class="tip">
           <p for="tip-select">Select Tip %</p>
 
           <div class="tip-select">
-            <input type="button" value="5%"></button>
-            <input type="button" value="10%"></button>
-            <input type="button" value="15%"></button>
-            <input type="button" value="25%"></button>
-            <input type="button" value="50%"></button>
-            <input type="number" placeholder="Custom" name="custom-tip" step="1" class="custom-tip"/>
+            <input type="button" value="5%" />
+            <input type="button" value="10%" />
+            <input type="button" value="15%" />
+            <input type="button" value="25%" />
+            <input type="button" value="50%" />
+            <input
+              type="number"
+              placeholder="Custom"
+              name="custom-tip"
+              step="1"
+              class="custom-tip"
+              max="99"
+            />
           </div>
         </div>
 
@@ -46,7 +59,14 @@
           <form action="submit" class="people-input">
             <label for="number-people"> Number of People </label>
             <div class="input-wrapper">
-              <input type="number" name="number-people" placeholder="0" step="1" class="number-input"/>
+              <input
+                type="number"
+                name="number-people"
+                placeholder="0"
+                step="1"
+                class="number-input"
+                id="number-people"
+              />
             </div>
           </form>
         </div>

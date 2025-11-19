@@ -7,6 +7,12 @@ body {
   max-width: 100vw;
 }
 
+.logo {
+  display: block;
+  width: 5.5rem;
+  margin: b.$spacing-4 auto;
+}
+
 .app-card {
   background-color: b.$white;
   max-width: 100%;
@@ -42,6 +48,12 @@ body {
   pointer-events: none;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 label {
   @include mx.txt-prst-5;
   color: b.$grey500;
@@ -51,7 +63,7 @@ label {
   width: 100%;
 
   .input-wrapper::before {
-    content: url(/assets/images/icon-dollar.svg);
+    content: url(../images/icon-dollar.svg);
   }
 }
 
@@ -107,7 +119,7 @@ label {
   }
 
   .input-wrapper::before {
-    content: url(/assets/images/icon-person.svg);
+    content: url(../images/icon-person.svg);
   }
 }
 
@@ -163,7 +175,7 @@ label {
     border-radius: b.$spacing-1;
     border: none;
   }
-  
+
   .reset:disabled {
     color: b.$green800;
     background-color: b.$green750;
@@ -172,14 +184,19 @@ label {
 
 @media (min-width: 44rem) {
   body {
-    display: flex;
-    align-items: center;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+  }
+
+  .logo {
+    margin: b.$spacing-10 auto;
   }
 
   .app-card {
     width: 80%;
-    margin: auto;
+    margin: 0 auto;
     box-sizing: border-box;
     padding: b.$spacing-6 b.$spacing-10;
   }

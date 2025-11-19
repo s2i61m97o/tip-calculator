@@ -6,68 +6,81 @@ const tipOutput = document.querySelector(".tip-pp");
 const totalOutput = document.querySelector(".total-pp");
 const resetButton = document.querySelector(".reset");
 
-let tipPercentValue = 0;
-let billTotal = 0;
-let numberOfPeople = 0;
+// Set starting state
 
-billInput.addEventListener("input", (event) => {
-  event.preventDefault();
-  billTotal = Number(event.target.value);
+let state = { billTotal: 0, tipPercentValue: 0, numberOfPeople: 0 };
 
-  calcTotals(billTotal, tipPercentValue, numberOfPeople);
+billInput.addEventListener("input", (e) => {
+  let inputValue = e.target.value;
+  // To allow max 2 decimal places:
+  // Check to see if value contains decimal places
+  if (inputValue.includes(".")) {
+    // Split the value before and after . => returns an array
+    const values = inputValue.split(".");
+    // check if the value after the . is greater than 2 places
+    if (values[1]?.length > 2) {
+      // if so, remove access and rejoin with rest of number
+      inputValue = `${values[0]}.${values[1].slice(0, 2)}`;
+      // set the current value to rejoined number, allowing only 2 decimal place input in real time
+      e.target.value = inputValue;
+    }
+  }
+
+  state.billTotal = Number(inputValue);
+  calcTotals();
 });
 
 tipSelectInputs.forEach((input) => {
   if (input.type === "button") {
     input.addEventListener("click", (event) => {
-      event.preventDefault();
       const eventTarget = event.target;
-      tipPercentValue = Number(eventTarget.value.slice(0, -1));
+      state.tipPercentValue = Number(eventTarget.value.slice(0, -1));
       setActive(eventTarget);
-      calcTotals(billTotal, tipPercentValue, numberOfPeople);
+      calcTotals();
     });
   } else {
-    input.addEventListener("input", (event) => {
-      event.preventDefault();
-      const eventTarget = event.target;
-      tipPercentValue = eventTarget.value;
-      removeActive(eventTarget);
-      calcTotals(billTotal, tipPercentValue, numberOfPeople);
+    input.addEventListener("input", (e) => {
+      tipPercentValue = e.target.value;
+      if (tipPercentValue.length > 2) {
+        state.tipPercentValue = tipPercentValue.slice(0, 2);
+        e.target.value = tipPercentValue;
+      }
+      removeActive(e.target);
+      calcTotals();
     });
   }
 });
 
-numberPeople.addEventListener("input", (event) => {
-  event.preventDefault();
-  numberOfPeople = event.target.value;
-  calcTotals(billTotal, tipPercentValue, numberOfPeople);
-});
+numberPeople.addEventListener("input", (e) => {
+  peopleInput = e.target.value;
 
+  if (peopleInput.includes(".")) {
+    peopleInputValues = peopleInput.split(".");
+    e.target.value = peopleInputValues[0];
+  }
+
+  state.numberOfPeople = peopleInput;
+  calcTotals();
+});
 
 resetButton.addEventListener("click", () => {
   formReset();
-})
+});
 
-function calcTotals(bill, percent, tip) {
-  if (bill <= 0 || percent <= 0 || tip <= 0) {
+function calcTotals() {
+  const { billTotal, tipPercentValue, numberOfPeople } = state;
+  if (billTotal <= 0 || tipPercentValue <= 0 || numberOfPeople <= 0) {
     tipOutput.textContent = "$0.00";
     totalOutput.textContent = "$0.00";
   } else {
-    resetButton.removeAttribute("disabled");
-    const tipTotal = calcTip(billTotal, tipPercentValue);
+    resetButton.disabled = false;
+
+    const tipTotal = billTotal * (tipPercentValue / 100);
     const perPersonTip = tipTotal / numberOfPeople;
-    const perPersonTotal = totalPerPerson(billTotal, tipTotal, numberOfPeople);
-    tipOutput.textContent = "$" + perPersonTip;
-    totalOutput.textContent = "$" + perPersonTotal;
+    const perPersonTotal = (billTotal + tipTotal) / numberOfPeople;
+    tipOutput.textContent = "$" + perPersonTip.toFixed(2);
+    totalOutput.textContent = "$" + perPersonTotal.toFixed(2);
   }
-}
-
-function calcTip(bill, percent) {
-  return bill * (percent / 100);
-}
-
-function totalPerPerson(bill, tip, people) {
-  return (bill + tip) / people;
 }
 
 function setActive(target) {
@@ -84,12 +97,15 @@ function removeActive(eventTarget) {
 }
 
 function formReset() {
+  resetState();
   billInput.reset();
   removeActive(null);
   tipSelectInputs[5].value = "";
   numberPeople.reset();
-  tipPercentValue = 0;
-  billTotal = 0;
-  numberOfPeople = 0;
-  resetButton.setAttribute("disabled", "")
+  resetButton.disabled = true;
+}
+
+function resetState() {
+  state = { billTotal: 0, tipPercentValue: 0, numberOfPeople: 0 };
+  calcTotals();
 }
