@@ -1,66 +1,73 @@
-# Frontend Mentor - Tip calculator app solution
+# React + TypeScript + Vite
 
-This is a solution to the [Tip calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Table of contents
+Currently, two official plugins are available:
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Overview
+## React Compiler
 
-### The challenge
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-Users should be able to:
+## Expanding the ESLint configuration
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Calculate the correct tip and total cost of the bill per person
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-### Screenshot
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-![Completed Project Screenshot](/completed-project-screenshot.png)
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-### Links
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-- [Github Repository](https://github.com/s2i61m97o/tip-calculator)
-- [Live Site](https://s2i61m97o.github.io/tip-calculator)
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-## My process
-
-### Built with
-
-- Semantic HTML5 markup
-- Flexbox
-- Mobile-first workflow
-- SASS
-- JavaScript
-
-### What I learned
-
-I learnt how to limit inputs to a set amount of decimal places, or no decimal places, for number input in real time. This is done by retrieving the input on changes, and slicing off unwanted values - such as anything more than two decimal places, and setting the value of the input to the new value. From the user perspective, this then does not allow for input different to what is required. 
-
-I also learnt that about enabling and disabling components, such as button in this case, in JavaScript.
-
-### Continued development
-
-I will continue to look at refactoring code, and trying to make it DRY. I may come back to this project to refactor code where I can.
-
-### Useful resources
-
-- I used [this css-tricks](https://css-tricks.com/snippets/css/turn-off-number-input-spinners/) to remove the step arrows for the number inputs, as I did not like them being part of the app.
-
-
-## Author
-
-- Frontend Mentor - [@s2i61m97o](https://www.frontendmentor.io/profile/s2i61m97o)
-
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
