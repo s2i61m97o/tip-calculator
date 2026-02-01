@@ -4,7 +4,6 @@ import {
   type ChangeEvent,
   type KeyboardEvent,
   type MouseEvent,
-  type MouseEventHandler,
 } from "react";
 
 export default function App() {

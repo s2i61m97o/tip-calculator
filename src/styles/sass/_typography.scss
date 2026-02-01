@@ -1,43 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
 
-@mixin txt-prst-1 {
+@mixin output-value {
   font-family: "Space Mono", monospace;
   font-weight: 700;
-  font-size: 3rem;
+  font-size: clamp(2rem, 1.6479rem + 1.5023vw, 3rem);
   line-height: 4.5rem;
   letter-spacing: -1px;
 }
 
-@mixin txt-prst-2 {
-  font-family: "Space Mono", monospace;
-  font-weight: 700;
-  font-size: 2rem;
-  line-height: 3rem;
-  letter-spacing: -0.67px;
-}
-
-@mixin txt-prst-3 {
+@mixin input {
   font-family: "Space Mono", monospace;
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 2.25rem;
 }
 
-@mixin txt-prst-4 {
+@mixin button {
   font-family: "Space Mono", monospace;
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.875rem;
 }
 
-@mixin txt-prst-5 {
+@mixin label {
   font-family: "Space Mono", monospace;
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.5rem;
 }
 
-@mixin txt-prst-6 {
+@mixin sub-label {
   font-family: "Space Mono", monospace;
   font-weight: 700;
   font-size: 0.8125rem;

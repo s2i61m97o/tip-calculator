@@ -1,5 +1,5 @@
 @use "base" as b;
-@use "mixins" as mx;
+@use "typography" as t;
 
 body {
   background-color: b.$grey200;
@@ -24,7 +24,7 @@ body {
   position: relative;
 
   .number-input {
-    @include mx.txt-prst-3;
+    @include t.input;
     color: b.$green900;
     background-color: b.$grey50;
     padding: b.$spacing-1 b.$spacing-2;
@@ -55,7 +55,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 label {
-  @include mx.txt-prst-5;
+  @include t.label;
   color: b.$grey500;
 }
 
@@ -70,8 +70,8 @@ label {
 .tip {
   margin: b.$spacing-4 0;
 
-  p {
-    @include mx.txt-prst-5;
+  label {
+    @include t.label;
     color: b.$grey500;
   }
 }
@@ -86,7 +86,7 @@ label {
   gap: b.$spacing-2;
 
   input {
-    @include mx.txt-prst-3;
+    @include t.input;
     padding: b.$spacing-1 b.$spacing-2;
     border-radius: 0.25rem;
     width: calc(50% - b.$spacing-2);
@@ -107,7 +107,7 @@ label {
   button {
     background-color: b.$green900;
     color: b.$white;
-    @include mx.txt-prst-3;
+    @include t.input;
   }
   .selected-tip {
     background-color: b.$green400 !important;
@@ -150,25 +150,25 @@ label {
 
   .main-lb {
     color: b.$white;
-    @include mx.txt-prst-5;
+    @include t.label;
     margin: b.$spacing-0;
   }
 
   .pp {
     color: b.$grey400;
-    @include mx.txt-prst-6;
+    @include t.sub-label;
     margin: b.$spacing-0;
   }
 
   .tip-pp,
   .total-pp {
     color: b.$green400;
-    @include mx.txt-prst-2;
+    @include t.output-value;
     margin: 0;
   }
 
   .reset {
-    @include mx.txt-prst-4;
+    @include t.button;
     width: 100%;
     color: b.$green900;
     background-color: b.$green400;
@@ -213,11 +213,6 @@ label {
 
   .app-outputs {
     padding: b.$spacing-5 b.$spacing-6;
-
-    .tip-pp,
-    .total-pp {
-      @include mx.txt-prst-1;
-    }
   }
 }
 
