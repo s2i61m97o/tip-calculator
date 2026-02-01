@@ -78,6 +78,7 @@ label {
 
 .tip-select {
   margin-top: b.$spacing-1;
+  border: none;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -103,9 +104,10 @@ label {
     color: b.$grey550;
   }
 
-  input[type="button"] {
+  button {
     background-color: b.$green900;
     color: b.$white;
+    @include mx.txt-prst-3;
   }
   .selected-tip {
     background-color: b.$green400 !important;

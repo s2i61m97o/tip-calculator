@@ -4,6 +4,7 @@ import {
   type ChangeEvent,
   type KeyboardEvent,
   type MouseEvent,
+  type MouseEventHandler,
 } from "react";
 
 export default function App() {
@@ -59,7 +60,10 @@ export default function App() {
   }
 
   function getTip(
-    e: MouseEvent<HTMLInputElement> | ChangeEvent<HTMLInputElement>,
+    e:
+      | MouseEvent<HTMLButtonElement>
+      | ChangeEvent<HTMLInputElement>
+      | MouseEvent<HTMLInputElement>,
   ) {
     const inputTip: number = parseInt(e.currentTarget.value);
     if (isNaN(inputTip)) {
@@ -115,46 +119,48 @@ export default function App() {
           <div className="tip">
             <label htmlFor="tip-select">Select Tip %</label>
 
-            <div className="tip-select" id="tip-select">
-              <input
-                type="button"
+            <fieldset className="tip-select" id="tip-select">
+              <legend>Select Tip %</legend>
+              <button
                 value={5}
                 name="tip"
                 className={tipPercent == 5 ? "selected-tip" : undefined}
                 onClick={getTip}
-                readOnly
-              />
-              <input
-                type="button"
+              >
+                5%
+              </button>
+              <button
                 value={10}
                 name="tip"
                 className={tipPercent === 10 ? "selected-tip" : undefined}
                 onClick={getTip}
-                readOnly
-              />
-              <input
-                type="button"
+              >
+                10%
+              </button>
+              <button
                 value={15}
                 name="tip"
                 className={tipPercent === 15 ? "selected-tip" : undefined}
                 onClick={getTip}
-                readOnly
-              />
-              <input
-                type="button"
+              >
+                15%
+              </button>
+              <button
                 value={25}
                 name="tip"
                 className={tipPercent === 25 ? "selected-tip" : undefined}
                 onClick={getTip}
-              />
-              <input
-                type="button"
+              >
+                25%
+              </button>
+              <button
                 value={50}
                 name="tip"
                 className={tipPercent === 50 ? "selected-tip" : undefined}
                 onClick={getTip}
-                readOnly
-              />
+              >
+                50%
+              </button>
               <input
                 type="number"
                 placeholder="Custom"
@@ -168,7 +174,7 @@ export default function App() {
                   setCustomTipDisplay(e);
                 }}
               />
-            </div>
+            </fieldset>
           </div>
 
           <div className="number-of-people">
