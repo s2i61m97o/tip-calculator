@@ -1,3 +1,5 @@
+// ORIGINAL SOLUTION - pre-migration to React
+
 const billInput = document.querySelector(".bill-input");
 const tipSelectContainer = document.querySelector(".tip-select");
 const tipSelectInputs = tipSelectContainer.querySelectorAll("input");
@@ -8,7 +10,7 @@ const resetButton = document.querySelector(".reset");
 
 // Set starting state
 
-let state = { billTotal: 0, tipPercentValue: 0, numberOfPeople: 0 };
+let state = {billTotal: 0, tipPercentValue: 0, numberOfPeople: 0};
 
 billInput.addEventListener("input", (e) => {
   let inputValue = e.target.value;
@@ -68,7 +70,7 @@ resetButton.addEventListener("click", () => {
 });
 
 function calcTotals() {
-  const { billTotal, tipPercentValue, numberOfPeople } = state;
+  const {billTotal, tipPercentValue, numberOfPeople} = state;
   if (billTotal <= 0 || tipPercentValue <= 0 || numberOfPeople <= 0) {
     tipOutput.textContent = "$0.00";
     totalOutput.textContent = "$0.00";
@@ -106,6 +108,6 @@ function formReset() {
 }
 
 function resetState() {
-  state = { billTotal: 0, tipPercentValue: 0, numberOfPeople: 0 };
+  state = {billTotal: 0, tipPercentValue: 0, numberOfPeople: 0};
   calcTotals();
 }
