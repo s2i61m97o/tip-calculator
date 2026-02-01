@@ -43,12 +43,18 @@ Users should be able to:
 - Mobile-first workflow
 - SASS
 - JavaScript
+- React (Resubmit)
+- TypeScript (Resubmit)
 
 ### What I learned
 
 I learnt how to limit inputs to a set amount of decimal places, or no decimal places, for number input in real time. This is done by retrieving the input on changes, and slicing off unwanted values - such as anything more than two decimal places, and setting the value of the input to the new value. From the user perspective, this then does not allow for input different to what is required.
 
 I also learnt that about enabling and disabling components, such as button in this case, in JavaScript.
+
+#### Resubmit
+
+I was able to convert the logic to make use of React and React's state without many issues. My main learning point came with TypeScript and event types in React, such as 'ChangeEvent'.
 
 ### Continued development
 
