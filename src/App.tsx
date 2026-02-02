@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import "./App.css";
 import {
   useState,
@@ -64,6 +65,7 @@ export default function App() {
       | ChangeEvent<HTMLInputElement>
       | MouseEvent<HTMLInputElement>,
   ) {
+    e.preventDefault();
     const inputTip: number = parseInt(e.currentTarget.value);
     if (isNaN(inputTip)) {
       setTipPercent(0);
@@ -92,125 +94,141 @@ export default function App() {
     setPeople(0);
     setDisplayTip(0);
   }
-
   return (
     <>
-      <img src="assets/images/logo.svg" alt="Splitter logo" className="logo" />
+      <img src="images/logo.svg" alt="Splitter logo" className="logo" />
 
-      <section className="app-card">
-        <section className="app-inputs">
-          <form action="submit" className="bill-input">
-            <label htmlFor="bill-total"> Bill </label>
-            <div className="input-wrapper">
-              <input
-                className="bill-total number-input"
-                placeholder="0.00"
-                id="bill-total"
-                inputMode="decimal"
-                name="bill-total"
-                onKeyDown={getBillTotal}
-                pattern="[0-9]*"
-                type="text"
-                value={displayBill ? displayBill : undefined}
-              />
+      <section className="card">
+        <section className="inputs">
+          <form action="submit" className="inputs__form">
+            <div className="inputs__bill">
+              <label htmlFor="bill-total" className="label">
+                Bill
+              </label>
+              <div className="inputs__inputWrapper">
+                <input
+                  className="inputs__number"
+                  placeholder="0.00"
+                  id="bill-total"
+                  inputMode="decimal"
+                  name="bill-total"
+                  onKeyDown={getBillTotal}
+                  pattern="[0-9]*"
+                  type="text"
+                  value={billTotal ? displayBill : ""}
+                />
+              </div>
             </div>
-          </form>
-          <div className="tip">
-            <label htmlFor="tip-select">Select Tip %</label>
+            <div className="inputs__tipPercent">
+              <fieldset className="inputs__selectTip" id="tip-select">
+                <legend className="label">Select Tip %</legend>
+                <button
+                  value={5}
+                  name="tip"
+                  className={clsx(
+                    "input__button",
+                    tipPercent == 5 ? "input__button-active" : undefined,
+                  )}
+                  onClick={getTip}
+                >
+                  5%
+                </button>
+                <button
+                  value={10}
+                  name="tip"
+                  className={clsx(
+                    "input__button",
+                    tipPercent === 10 ? "input__button-active" : undefined,
+                  )}
+                  onClick={getTip}
+                >
+                  10%
+                </button>
+                <button
+                  value={15}
+                  name="tip"
+                  className={clsx(
+                    "input__button",
+                    tipPercent === 15 ? "input__button-active" : undefined,
+                  )}
+                  onClick={getTip}
+                >
+                  15%
+                </button>
+                <button
+                  value={25}
+                  name="tip"
+                  className={clsx(
+                    "input__button",
+                    tipPercent === 25 ? "input__button-active" : undefined,
+                  )}
+                  onClick={getTip}
+                >
+                  25%
+                </button>
+                <button
+                  value={50}
+                  name="tip"
+                  className={clsx(
+                    "input__button",
+                    tipPercent === 50 ? "input__button-active" : undefined,
+                  )}
+                  onClick={getTip}
+                >
+                  50%
+                </button>
+                <input
+                  type="number"
+                  placeholder="Custom"
+                  name="tip"
+                  step={1}
+                  value={displayTip || ""}
+                  className={clsx("inputs__number", "inputs__customTip")}
+                  onClick={getTip}
+                  onChange={(e) => {
+                    getTip(e);
+                    setCustomTipDisplay(e);
+                  }}
+                />
+              </fieldset>
+            </div>
 
-            <fieldset className="tip-select" id="tip-select">
-              <legend>Select Tip %</legend>
-              <button
-                value={5}
-                name="tip"
-                className={tipPercent == 5 ? "selected-tip" : undefined}
-                onClick={getTip}
-              >
-                5%
-              </button>
-              <button
-                value={10}
-                name="tip"
-                className={tipPercent === 10 ? "selected-tip" : undefined}
-                onClick={getTip}
-              >
-                10%
-              </button>
-              <button
-                value={15}
-                name="tip"
-                className={tipPercent === 15 ? "selected-tip" : undefined}
-                onClick={getTip}
-              >
-                15%
-              </button>
-              <button
-                value={25}
-                name="tip"
-                className={tipPercent === 25 ? "selected-tip" : undefined}
-                onClick={getTip}
-              >
-                25%
-              </button>
-              <button
-                value={50}
-                name="tip"
-                className={tipPercent === 50 ? "selected-tip" : undefined}
-                onClick={getTip}
-              >
-                50%
-              </button>
-              <input
-                type="number"
-                placeholder="Custom"
-                name="tip"
-                step={1}
-                value={displayTip || ""}
-                className="custom-tip"
-                onClick={getTip}
-                onChange={(e) => {
-                  getTip(e);
-                  setCustomTipDisplay(e);
-                }}
-              />
-            </fieldset>
-          </div>
-
-          <div className="number-of-people">
-            <form action="submit" className="people-input">
-              <label htmlFor="number-people"> Number of People </label>
-              <div className="input-wrapper">
+            <div className="inputs__people">
+              <label htmlFor="number-people" className="label">
+                Number of People
+              </label>
+              <div className="inputs__inputWrapper">
                 <input
                   type="number"
                   name="number-people"
                   step={1}
                   value={people || ""}
-                  className="number-input"
+                  className="inputs__number"
                   id="number-people"
                   onChange={getPeople}
                   placeholder="0"
                 />
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </section>
 
-        <section className="app-outputs">
-          <div className="output">
-            <div className="output-label">
-              <p className="main-lb">Tip Amount</p>
-              <p className="pp">/ person</p>
+        <section className="outputs">
+          <div className="outputs__container">
+            <div className="outputs__labels">
+              <p className="outputs__label-large">Tip Amount</p>
+              <p className="outputs__label-sub">/ person</p>
             </div>
-            <p className="tip-pp">
+            <p className="outputs__data">
               ${perPersonTip ? (people === 0 ? "0.00" : perPersonTip) : "0.00"}
             </p>
           </div>
-          <div className="output">
-            <div className="output-label">
-              <p className="main-lb">Total</p>
-              <p className="pp">/ person</p>
+          <div className="outputs__container">
+            <div className="outputs__label">
+              <p className="outputs__label-large">Total</p>
+              <p className="outputs__label-sub">/ person</p>
             </div>
-            <p className="total-pp">
+            <p className="outputs__data">
               $
               {perPersonTotal
                 ? people === 0
@@ -220,7 +238,7 @@ export default function App() {
             </p>
           </div>
           <button
-            className="reset"
+            className="outputs__reset"
             disabled={billTotal || tipPercent || people ? false : true}
             onClick={reset}
           >
