@@ -116,6 +116,7 @@ export default function App() {
                   pattern="[0-9]*"
                   type="text"
                   value={billTotal ? displayBill : ""}
+                  onChange={() => {}}
                 />
               </div>
             </div>
@@ -123,57 +124,62 @@ export default function App() {
               <fieldset className="inputs__selectTip" id="tip-select">
                 <legend className="label">Select Tip %</legend>
                 <button
-                  value={5}
+                  value="5"
                   name="tip"
                   className={clsx(
                     "input__button",
                     tipPercent == 5 ? "input__button-active" : undefined,
                   )}
                   onClick={getTip}
+                  onChange={() => {}}
                 >
                   5%
                 </button>
                 <button
-                  value={10}
+                  value="10"
                   name="tip"
                   className={clsx(
                     "input__button",
                     tipPercent === 10 ? "input__button-active" : undefined,
                   )}
                   onClick={getTip}
+                  onChange={() => {}}
                 >
                   10%
                 </button>
                 <button
-                  value={15}
+                  value="15"
                   name="tip"
                   className={clsx(
                     "input__button",
                     tipPercent === 15 ? "input__button-active" : undefined,
                   )}
                   onClick={getTip}
+                  onChange={() => {}}
                 >
                   15%
                 </button>
                 <button
-                  value={25}
+                  value="25"
                   name="tip"
                   className={clsx(
                     "input__button",
                     tipPercent === 25 ? "input__button-active" : undefined,
                   )}
                   onClick={getTip}
+                  onChange={() => {}}
                 >
                   25%
                 </button>
                 <button
-                  value={50}
+                  value="50"
                   name="tip"
                   className={clsx(
                     "input__button",
                     tipPercent === 50 ? "input__button-active" : undefined,
                   )}
                   onClick={getTip}
+                  onChange={() => {}}
                 >
                   50%
                 </button>
